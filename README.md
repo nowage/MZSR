@@ -1,4 +1,6 @@
 # MZSR
+## Info
+* Update by Finfra Co., Ltd
 
 # [Meta-Transfer Learning for Zero-Shot Super-Resolution](https://openaccess.thecvf.com/content_CVPR_2020/html/Soh_Meta-Transfer_Learning_for_Zero-Shot_Super-Resolution_CVPR_2020_paper.html) CVPR 2020
 
@@ -7,11 +9,21 @@ Jae Woong Soh, Sunwoo Cho, and Nam Ik Cho
 [[Paper](https://openaccess.thecvf.com/content_CVPR_2020/papers/Soh_Meta-Transfer_Learning_for_Zero-Shot_Super-Resolution_CVPR_2020_paper.pdf)] [[Supplementary](https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Soh_Meta-Transfer_Learning_for_CVPR_2020_supplemental.pdf)] [[Arxiv](https://arxiv.org/abs/2002.12213)]
 
 ## Environments
-- Ubuntu 18.04
+* Colab (2021.05.26)
+<!-- - Ubuntu 18.04
 - [Tensorflow 1.8](http://www.tensorflow.org/)
 - CUDA 9.0 & cuDNN 7.1
-- Python 3.6
+- Python 3.6 -->
+* Colab Example (GoogleDrive 연동후 사용,GPU사용 Kernel에서 실행)
+```
+%%bash
+cd /content/drive/MyDrive/
+git clone https://github.com/nowage/MZSR
+cd MZSR
+python3 main.py --gpu 0 --inputpath Input/g20/Set5/ --gtpath GT/Set5/ --savepath results/Set5 --kernelpath Input/g20/kernel.mat --model 0 --num 1
+ls /content/drive/MyDrive/MZSR/results/Set5/01/baby.png
 
+```
 ## Abstract
 
 Convolutional neural networks (CNNs) have shown dramatic improvements in single image super-resolution (SISR) by using large-scale external samples. Despite their remarkable performance based on the external dataset, they cannot exploit internal information within a specific image. Another problem is that they are applicable only to the specific condition of data that they are supervised. For instance, the low-resolution (LR) image should be a "bicubic" downsampled noise-free image from a high-resolution (HR) one. To address both issues, zero-shot super-resolution (ZSSR) has been proposed for flexible internal learning. However, they require thousands of gradient updates, i.e., long inference time. In this paper, we present Meta-Transfer Learning for Zero-Shot Super-Resolution (MZSR), which leverages ZSSR. Precisely, it is based on finding a generic initial parameter that is suitable for internal learning. Thus, we can exploit both external and internal information, where one single gradient update can yield quite considerable results. (See Figure 1). With our method, the network can quickly adapt to a given image condition. In this respect, our method can be applied to a large spectrum of image conditions within a fast adaptation process.
@@ -21,9 +33,9 @@ Convolutional neural networks (CNNs) have shown dramatic improvements in single 
 
 ### Super-Resolution for Various Kernels
 
-#### [ZSSR (CVPR 2018)] "Zero-Shot" Super-Resolution Using Deep Internal Learning <a href="http://openaccess.thecvf.com/content_cvpr_2018/html/Shocher_Zero-Shot_Super-Resolution_Using_CVPR_2018_paper.html">Link</a> 
+#### [ZSSR (CVPR 2018)] "Zero-Shot" Super-Resolution Using Deep Internal Learning <a href="http://openaccess.thecvf.com/content_cvpr_2018/html/Shocher_Zero-Shot_Super-Resolution_Using_CVPR_2018_paper.html">Link</a>
 
-#### [IKC (CVPR 2019)] Blind Super-Resolution With Iterative Kernel Correction <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Gu_Blind_Super-Resolution_With_Iterative_Kernel_Correction_CVPR_2019_paper.html">Link</a> 
+#### [IKC (CVPR 2019)] Blind Super-Resolution With Iterative Kernel Correction <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Gu_Blind_Super-Resolution_With_Iterative_Kernel_Correction_CVPR_2019_paper.html">Link</a>
 
 ### Optimization-based Meta-Learning
 
@@ -45,7 +57,7 @@ In the meta-test phase, self-supervision within a test image is exploited to tra
 
 ### <u> Algorithms </u>
 
-<p align="center"><img src="figure/meta-training.png" width="400">&nbsp;&nbsp;<img src="figure/meta-test.png" width="400"></p> 
+<p align="center"><img src="figure/meta-training.png" width="400">&nbsp;&nbsp;<img src="figure/meta-test.png" width="400"></p>
 
 Left: The algorithm of Meta-Transfer Learning & Right: The algorithm of Meta-Test.
 
@@ -114,7 +126,7 @@ Make sure all configurations in **config.py** are set.
 
 [Options]
 ```
-python main.py --train --gpu [GPU_number] --trial [Trial of your training] --step [Global step]
+python3 main.py --train --gpu [GPU_number] --trial [Trial of your training] --step [Global step]
 
 --train: Flag in order to train.
 --gpu: If you have more than one gpu in your computer, the number denotes the index. [Default 0]
@@ -128,7 +140,7 @@ Ready for the input data (low-resolution) and corresponding kernel (kernel.mat f
 
 [Options]
 ```
-python main.py --gpu [GPU_number] --inputpath [LR path] --gtpath [HR path] --savepath [SR path]  --kernelpath [kernel.mat path] --model [0/1/2/3] --num [1/10]
+python3 main.py --gpu [GPU_number] --inputpath [LR path] --gtpath [HR path] --savepath [SR path]  --kernelpath [kernel.mat path] --model [0/1/2/3] --num [1/10]
 
 --gpu: If you have more than one gpu in your computer, the number designates the index of GPU which is going to be used. [Default 0]
 --inputpath: Path of input images [Default: Input/g20/Set5/]
@@ -159,7 +171,7 @@ self.back_projection_iters=4	-> The number of iteration of back projection.
 ### An example of test codes
 
 ```
-python main.py --gpu 0 --inputpath Input/g20/Set5/ --gtpath GT/Set5/ --savepath results/Set5 --kernelpath Input/g20/kernel.mat --model 0 --num 1
+python3 main.py --gpu 0 --inputpath Input/g20/Set5/ --gtpath GT/Set5/ --savepath results/Set5 --kernelpath Input/g20/kernel.mat --model 0 --num 1
 ```
 
 
