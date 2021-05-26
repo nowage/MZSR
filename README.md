@@ -14,7 +14,7 @@ Jae Woong Soh, Sunwoo Cho, and Nam Ik Cho
 - [Tensorflow 1.8](http://www.tensorflow.org/)
 - CUDA 9.0 & cuDNN 7.1
 - Python 3.6 -->
-* Colab Example (GoogleDrive 연동후 사용,GPU사용 Kernel에서 실행)
+* Colab Example (GPU사용 Kernel에서 실행)
 ```
 %%bash
 git clone https://github.com/nowage/MZSR
