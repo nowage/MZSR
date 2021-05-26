@@ -1,4 +1,5 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 def conv2d(x, kernel, bias, strides=1, scope=None, activation=None):
     with tf.variable_scope(scope):
