@@ -17,11 +17,10 @@ Jae Woong Soh, Sunwoo Cho, and Nam Ik Cho
 * Colab Example (GoogleDrive 연동후 사용,GPU사용 Kernel에서 실행)
 ```
 %%bash
-cd /content/drive/MyDrive/
 git clone https://github.com/nowage/MZSR
 cd MZSR
 python3 main.py --gpu 0 --inputpath Input/g20/Set5/ --gtpath GT/Set5/ --savepath results/Set5 --kernelpath Input/g20/kernel.mat --model 0 --num 1
-ls /content/drive/MyDrive/MZSR/results/Set5/01/baby.png
+ls /content/MZSR/results/Set5/01/baby.png
 
 ```
 ## Abstract
